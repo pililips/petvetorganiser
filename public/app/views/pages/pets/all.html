@@ -1,0 +1,51 @@
+<div class="page-header">
+    <h1>
+        Pets
+        <a href="/pets/create" class="btn btn-default">
+            <span class="glyphicon glyphicon-plus"></span>
+            New Pet
+        </a>
+    </h1>
+
+</div>
+
+<div class="jumbotron text-center" ng-show="pet.processing">
+    <span class="fa fa-spinner fa-spin"></span>
+    <p>Loading Pets...</p>
+</div>
+
+<table  class="table table-bordered table-striped" ng-show="pet.pets">
+    <thead>
+    <tr>
+        <th>Ime</th>
+        <th>Vrsta</th>
+        <th>Pol</th>
+        <th>Godine</th>
+        <th>Vlasnik</th>
+        <th>Opis</th>
+        <th class="col-sm-1"> </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+           <td><input ng-model="search.name" placeholder="Pretrazi po ..." class="form-control" type="text"/></td>
+           <td><input ng-model="search.type" class="form-control" type="text"/></td>
+           <td><input ng-model="search.gender" class="form-control" type="text"/></td>
+           <td><input ng-model="search.age" class="form-control" type="text"/></td>
+           <td><input ng-model="search.owner" class="form-control" type="text"/></td>
+           <td><input ng-model="search.description" class="form-control" type="text"/></td>
+           <td><input ng-model="search.$"  placeholder="Pretrazi ..."  class="form-control" type="text"/></td>
+    </tr>
+    <tr ng-repeat="animal in pet.pets | filter:search:strict | limitTo: 5 | orderBy:sortOrder.order">
+        <td>{{ animal.name }}</td>
+        <td>{{ animal.type }}</td>
+        <td>{{ animal.gender }}</td>
+        <td>{{ animal.age }}</td>
+        <td>{{ animal.owner }}</td>
+        <td>{{ animal.description }}</td>
+        <td class="col-sm-1">
+            <a ng-href="/pets/{{ animal._id }}" class="btn btn-primary">View</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

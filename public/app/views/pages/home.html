@@ -1,0 +1,16 @@
+<div  class="jumbotron text-center">
+	<h1>Welcome to PetVet Organiser!</h1>
+
+<img src="http://denverpeturgentcare.com/clients/21696/images/shutterstock_286418909.jpg" alt="Welcome pic">
+
+	<div ng-if="!main.loggedIn">
+		<br>
+		<p>Login to see your data.</p>
+		<a href="/login" class="btn btn-primary">Login</a>
+	</div>
+	<div ng-if="main.loggedIn">
+		<br>
+		<p>Manage your pets.</p>
+		<a href="/pets" class="btn btn-primary">View Pets</a>
+	</div>
+</div>

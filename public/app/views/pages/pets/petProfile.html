@@ -1,0 +1,50 @@
+
+<div class="page-header">
+    <h1>
+        Pet's Info
+             <a href="/pets/{{ pet.petData._id }}/edit" style="background-color: #D0F2C9"  class="btn btn-default">
+            <span class="fa fa-plus"></span>
+            Update Pet
+        </a>
+        <a href="/pets/{{ pet.petData._id }}/new"  style="background-color: lightblue" class="btn btn-default">
+            <span class="fa fa-plus"></span>
+            Add Exam
+        </a>
+    </h1>
+
+</div>
+<div>
+		<h5><label class="col-sm-3 control-label">Name: {{ pet.petData.name }}</label>
+		<label class="col-sm-3 control-label">Type: {{ pet.petData.type }}</label>
+		<label class="col-sm-3 control-label">Owner: {{ pet.petData.owner }}</label>
+        <label class="col-sm-3 control-label">Years: {{ pet.petData.age }}</label>
+        <label class="col-sm-3 control-label">Gender: {{ pet.petData.gender }}</label>
+        <label class="col-sm-3 control-label">Description: {{ pet.petData.description }}</label>
+        <label class="col-sm-3 control-label">ExamsHad: {{ pet.numberExams }}</label></h5>
+
+</div>
+<br><br>
+<br><br>
+<table class="table table-bordered table-striped" ng-show="pet.dataExams">
+    <thead>
+    <tr>
+        <th>Doctor Name</th>
+        <th>Description</th>
+        <th>Created At</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input ng-model="search.created_by" placeholder="Pretrazi po ..." class="form-control" type="text"/></td>
+        <td><input ng-model="search.description" class="form-control" type="text"/></td>
+        <td><input ng-model="search.created_at" class="form-control" type="text"/></td>
+    </tr>
+    <tr ng-repeat="exam in pet.dataExams | filter:search:strict"> <!-- dodati filter da se vide samo 5 poslednjih po datumu -->
+        <td>{{ exam.created_by }}</td>
+        <td>{{ exam.description }}</td>
+        <td>{{ exam.created_at | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+
+    </tr>
+    </tbody>
+</table>

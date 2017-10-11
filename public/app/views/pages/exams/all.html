@@ -1,0 +1,39 @@
+<div class="page-header">
+    <h1>
+        Pregledi
+    </h1>
+
+</div>
+
+<div class="jumbotron text-center" ng-show="exam.processing">
+    <span class="fa fa-spinner fa-spin"></span>
+    <p>Loading Pregledi...</p>
+</div>
+
+<table class="table table-bordered table-striped" ng-show="exam.exams">
+    <thead>
+    <tr>
+
+        <th>description</th>
+        <th>created_at</th>
+        <th>created_by</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+ 
+           <td><input ng-model="search.description" placeholder="Pretrazi po ..." class="form-control" type="text"/></td>
+           <td><input ng-model="search.created_at" class="form-control" type="text"/></td>
+           <td><input ng-model="search.created_by" class="form-control" type="text"/></td>
+    </tr>
+    <tr ng-repeat="e in exam.exams | filter:search:strict | orderBy:'created_at':true ">
+
+
+        <td>{{ e.description }}</td>
+        <td>{{ e.created_at | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ e.created_by }}</td>
+
+    </tr>
+    </tbody>
+</table>

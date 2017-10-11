@@ -1,0 +1,34 @@
+
+<div class="page-header">
+    <h1>
+        {{user.userData.username}}'s Profile
+    </h1>
+
+</div>
+<div>
+		<h5><label class="col-sm-4 control-label">Name: {{ user.userData.name }}</label>
+		<label class="col-sm-4 control-label">Username: {{ user.userData.username }}</label>
+		<label class="col-sm-4 control-label">Number of Exams Done: {{ user.numberExams }}</label></h5>
+</div>
+<br><br>
+<table class="table table-bordered table-striped" ng-show="user.dataExams">
+    <thead>
+    <tr>
+        <th>Pet Name</th>
+        <th>Description</th>
+        <th>Created At</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input ng-model="search.pet.name" placeholder="Pretrazi po ..." class="form-control" type="text"/></td>
+        <td><input ng-model="search.description" class="form-control" type="text"/></td>
+        <td><input ng-model="search.created_at" class="form-control" type="text"/></td>
+    </tr>
+    <tr ng-repeat="exam in user.dataExams | filter:search:strict"> <!-- dodati filter da se vide samo 5 poslednjih po datumu -->
+        <td>{{ exam.pet.name }}</td>
+        <td>{{ exam.description }}</td>
+        <td>{{ exam.created_at | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+    </tr>
+    </tbody>
+</table>

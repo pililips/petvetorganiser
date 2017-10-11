@@ -1,0 +1,69 @@
+<div class="page-header">
+	<h1 ng-if="pet.type == 'create'">Create Pet</h1>
+	<h1 ng-if="pet.type == 'edit'">Edit Pet</h1>
+</div>
+
+<form class="form-horizontal" ng-submit="pet.savePet()">
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Name</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="pet.petData.name">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Type</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="pet.petData.type">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Gender</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="pet.petData.gender">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Age</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="pet.petData.age">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Owner</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="pet.petData.owner">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Description</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="pet.petData.description">
+		</div>
+	</div>
+
+
+	
+	<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-6">
+		<button type="submit" class="btn btn-success btn-lg btn-block" ng-if="pet.type == 'create'">Create Pet</button>
+		<button type="submit" class="btn btn-success btn-lg btn-block" ng-if="pet.type == 'edit'">Update Pet</button>
+	</div>
+	</div>
+
+</form>
+
+<div class="row show-hide-message" ng-show="pet.message">
+	<div class="col-sm-6 col-sm-offset-2">
+		
+		<div class="alert alert-info">
+			{{ pet.message }}
+		</div>
+
+	</div>
+</div>
