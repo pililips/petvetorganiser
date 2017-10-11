@@ -7,4 +7,4 @@ To run --> after download, use <i>npm install</i> to install all the dependencie
 Live link ->> https://mppetvetapp.herokuapp.com/
 
 #known issues 
-- deleting exams on live link. If using local database it's working  
+- deleting exams on live link. If using local database it's fine 
